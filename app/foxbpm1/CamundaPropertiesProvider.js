@@ -17,9 +17,8 @@ var processProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/Pro
     idProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/IdProps'),
     nameProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/NameProps'),
     executableProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/ExecutableProps');
- 
+
 // foxbpm properties
-var categoryProps = require('./parts/categoryProps');
 var serviceTaskDelegateProps = require('./parts/ServiceTaskDelegateProps'),
     userTaskProps = require('./parts/UserTaskProps'),
     asynchronousContinuationProps = require('./parts/AsynchronousContinuationProps'),
@@ -137,62 +136,61 @@ function createGeneralTabGroups(element, bpmnFactory, elementRegistry, elementTe
   };
   idProps(generalGroup, element, elementRegistry);
   nameProps(generalGroup, element);
-  categoryProps(generalGroup,element,elementRegistry);  
   processProps(generalGroup, element);
-  // versionTag(generalGroup, element);
-  // executableProps(generalGroup, element);
-  // elementTemplateChooserProps(generalGroup, element, elementTemplates);
+  versionTag(generalGroup, element);
+  executableProps(generalGroup, element);
+  elementTemplateChooserProps(generalGroup, element, elementTemplates);
 
-  // var customFieldsGroup = {
-  //   id: 'customField',
-  //   label: 'Custom Fields',
-  //   entries: []
-  // };
-  // elementTemplateCustomProps(customFieldsGroup, element, elementTemplates, bpmnFactory);
+  var customFieldsGroup = {
+    id: 'customField',
+    label: 'Custom Fields',
+    entries: []
+  };
+  elementTemplateCustomProps(customFieldsGroup, element, elementTemplates, bpmnFactory);
 
-  // var detailsGroup = {
-  //   id: 'details',
-  //   label: 'Details',
-  //   entries: []
-  // };
-  // serviceTaskDelegateProps(detailsGroup, element, bpmnFactory);
-  // userTaskProps(detailsGroup, element);
-  // scriptProps(detailsGroup, element, bpmnFactory);
-  // linkProps(detailsGroup, element);
-  // callActivityProps(detailsGroup, element, bpmnFactory);
-  // eventProps(detailsGroup, element, bpmnFactory, elementRegistry);
-  // sequenceFlowProps(detailsGroup, element, bpmnFactory);
-  // startEventInitiator(detailsGroup, element); // this must be the last element of the details group!
+  var detailsGroup = {
+    id: 'details',
+    label: 'Details',
+    entries: []
+  };
+  serviceTaskDelegateProps(detailsGroup, element, bpmnFactory);
+  userTaskProps(detailsGroup, element);
+  scriptProps(detailsGroup, element, bpmnFactory);
+  linkProps(detailsGroup, element);
+  callActivityProps(detailsGroup, element, bpmnFactory);
+  eventProps(detailsGroup, element, bpmnFactory, elementRegistry);
+  sequenceFlowProps(detailsGroup, element, bpmnFactory);
+  startEventInitiator(detailsGroup, element); // this must be the last element of the details group!
 
-  // var multiInstanceGroup = {
-  //   id: 'multiInstance',
-  //   label: 'Multi Instance',
-  //   entries: []
-  // };
-  // multiInstanceProps(multiInstanceGroup, element, bpmnFactory);
+  var multiInstanceGroup = {
+    id: 'multiInstance',
+    label: 'Multi Instance',
+    entries: []
+  };
+  multiInstanceProps(multiInstanceGroup, element, bpmnFactory);
 
-  // var asyncGroup = {
-  //   id : 'async',
-  //   label: 'Asynchronous Continuations',
-  //   entries : []
-  // };
-  // asynchronousContinuationProps(asyncGroup, element, bpmnFactory);
+  var asyncGroup = {
+    id : 'async',
+    label: 'Asynchronous Continuations',
+    entries : []
+  };
+  asynchronousContinuationProps(asyncGroup, element, bpmnFactory);
 
-  // var jobConfigurationGroup = {
-  //   id : 'jobConfiguration',
-  //   label : 'Job Configuration',
-  //   entries : [],
-  //   enabled: isJobConfigEnabled
-  // };
-  // jobConfiguration(jobConfigurationGroup, element, bpmnFactory);
+  var jobConfigurationGroup = {
+    id : 'jobConfiguration',
+    label : 'Job Configuration',
+    entries : [],
+    enabled: isJobConfigEnabled
+  };
+  jobConfiguration(jobConfigurationGroup, element, bpmnFactory);
 
-  // var externalTaskGroup = {
-  //   id : 'externalTaskConfiguration',
-  //   label : 'External Task Configuration',
-  //   entries : [],
-  //   enabled: isExternalTaskPriorityEnabled
-  // };
-  // externalTaskConfiguration(externalTaskGroup, element, bpmnFactory);
+  var externalTaskGroup = {
+    id : 'externalTaskConfiguration',
+    label : 'External Task Configuration',
+    entries : [],
+    enabled: isExternalTaskPriorityEnabled
+  };
+  externalTaskConfiguration(externalTaskGroup, element, bpmnFactory);
 
   var documentationGroup = {
     id: 'documentation',
@@ -203,12 +201,12 @@ function createGeneralTabGroups(element, bpmnFactory, elementRegistry, elementTe
 
   return [
     generalGroup,
-    // customFieldsGroup,
-    // detailsGroup,
-    // externalTaskGroup,
-    // multiInstanceGroup,
-    // asyncGroup,
-    // jobConfigurationGroup,
+    customFieldsGroup,
+    detailsGroup,
+    externalTaskGroup,
+    multiInstanceGroup,
+    asyncGroup,
+    jobConfigurationGroup,
     documentationGroup
   ];
 
@@ -457,13 +455,13 @@ function CamundaPropertiesProvider(eventBus, bpmnFactory, elementRegistry, eleme
 
     return [
       generalTab,
-      // variablesTab,
-      // connectorTab,
-      // formsTab,
-      // listenersTab,
-      // inputOutputTab,
-      // fieldInjectionsTab,
-      // extensionsTab
+      variablesTab,
+      connectorTab,
+      formsTab,
+      listenersTab,
+      inputOutputTab,
+      fieldInjectionsTab,
+      extensionsTab
     ];
   };
 

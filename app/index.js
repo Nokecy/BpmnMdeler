@@ -15,7 +15,6 @@ var $ = require('jquery'),
 var propertiesPanelModule = require('bpmn-js-properties-panel'),
   propertiesProviderModule = require('./foxbpm'),
   camundaModdleDescriptor = require('./resources/foxbpm');
-  camundaModdleDescriptor = require('bpmn-js-properties-panel/lib/provider/bpmn');
   
 
 var container = $('#js-drop-zone');
@@ -30,7 +29,7 @@ var modeler = new BpmnModeler({
   additionalModules: [
     // customTranslate,    
     propertiesPanelModule,
-    // propertiesProviderModule
+    propertiesProviderModule
   ],
   moddleExtensions: {
     foxbpm: camundaModdleDescriptor

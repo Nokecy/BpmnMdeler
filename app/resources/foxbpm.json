@@ -6,6 +6,74 @@
     "tagAlias": "lowerCase"
   },
   "associations": [],
-  "types": [],
-  "emumerations": [ ]
+  "types": [
+    {
+      "name": "Expression",
+      "properties": [
+        {
+          "name": "text",
+          "isBody": true,
+          "type": "String"
+        }
+      ]
+    },
+    {
+      "name": "FormUri",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "expression",
+          "isAttr": false,
+          "type": "Expression"
+        }
+      ]
+    },
+    {
+      "name": "Category",
+      "isAbstract": true,
+      "extends": [
+        "bpmn:Process"
+      ],
+      "properties": [
+        {
+          "name": "category",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "subject",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "formUri",
+          "isAttr": false,
+          "type": "FormUri"
+        },
+        {
+          "name": "formUriView",
+          "isAttr": false,
+          "type": "Expression"
+        },
+        {
+          "name": "taskSubject",
+          "isAttr": false,
+          "type": "Expression"
+        },
+        {
+          "name": "DataVariable",
+          "isAttr": false,
+          "type": "Expression"
+        },
+        {
+          "name": "potentialStarter",
+          "isAttr": false,
+          "type": "Expression"
+        }
+      ]
+    }
+  ],
+  "emumerations": []
 }
